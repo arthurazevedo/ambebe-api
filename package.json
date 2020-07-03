@@ -10,7 +10,7 @@
     "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "start": "yarn build && node dist/server.js",
     "migrate": "knex migrate:latest",
-    "unmigrate": "knex migrate:rollback",
+    "rollback": "knex migrate:rollback",
     "seed": "knex seed:run"
   },
   "dependencies": {
