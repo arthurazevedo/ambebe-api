@@ -1,7 +1,7 @@
 exports.up = (knex) => knex.schema.createTable('users', (table) => {
   table.increments('id');
   table.text('name');
-  table.integer('points');
+  table.integer('points').defaultTo(0);
   table.text('city');
   table.integer('age');
 
