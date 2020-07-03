@@ -7,6 +7,10 @@ class UserController {
 
     return res.json(users);
   }
+
+  static async store(req: Request, res: Response) {
+
+  }
 }
 
 export default UserController;
