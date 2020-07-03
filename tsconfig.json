@@ -10,18 +10,7 @@
     "removeComments": true,                
     "esModuleInterop": true,                  
     "skipLibCheck": true,                     
-    "forceConsistentCasingInFileNames": true,
-<<<<<<< HEAD
-    "baseUrl": ".",
-    "paths": {
-      "@controllers/*": ["./src/controllers/*"], 
-      "@models/*": ["./src/models/*"],
-      "@database/*": ["./src/database/*"], 
-      "@config/*": ["./src/config/*"], 
-      "@types-m/*": ["./src/types-m/*"]
-    }
-=======
->>>>>>> 24a164ea0e7c3e2fd48d7ea53d41a155baaf26ee
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": ["src/database/migrations"]
 }
