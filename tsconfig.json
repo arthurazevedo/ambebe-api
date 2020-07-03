@@ -18,7 +18,7 @@
       "@database/*": ["./src/database/*"], 
       "@config/*": ["./src/config/*"], 
       "@types-m/*": ["./src/types-m/*"]
-    },
+    }
   },
   "exclude": ["src/database/migrations"]
 }
