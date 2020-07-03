@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import knex from '@database/index';
+import knex from '../database';
 
 class UserController {
   static async index(req: Request, res: Response) {

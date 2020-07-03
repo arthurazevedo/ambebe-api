@@ -10,15 +10,4 @@ module.exports = {
     ],
     '@babel/preset-typescript',
   ],
-  plugins: [
-    ['module-resolver', {
-      alias: {
-        '@config': './src/config',
-        '@models': './src/models',
-        '@controllers': './src/controllers',
-        '@database': './src/database',
-        '@types-m': './src/types-m',
-      },
-    },
-    ]],
 };
