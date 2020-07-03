@@ -3,8 +3,9 @@ import knex from '../database';
 
 class UserController {
   static async index(req: Request, res: Response) {
-    const users = await knex('users');
+    const { username } = req.body;
 
+    const users = await knex('users');
     return res.json(users);
   }
 
@@ -13,10 +14,10 @@ class UserController {
       name, email, username, city, age,
     } = req.body;
 
-    let [user] = await knex('users').where('email', email);
+    let user = await knex('users').where('email', email).first();
     if (user) { return res.status(200).json(user); }
 
-    const [{ username: possibleUsername }] = await knex('users').where({ username }).select('username');
+    const { username: possibleUsername } = await knex('users').where({ username }).select('username').first();
     if (possibleUsername) return res.status(400).json({ error: `Já existe o username ${possibleUsername}.` });
 
     try {
