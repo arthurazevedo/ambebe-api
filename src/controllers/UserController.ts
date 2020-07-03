@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
+import jwt from 'jsonwebtoken';
 import knex from '../database';
 
 class UserController {
   static async index(req: Request, res: Response) {
-    const { username } = req.body;
-
     const users = await knex('users');
     return res.json(users);
   }
@@ -15,19 +14,29 @@ class UserController {
     } = req.body;
 
     let user = await knex('users').where('email', email).first();
-    if (user) { return res.status(200).json(user); }
+    if (user) {
+      const token = jwt.sign(user.id, process.env.JWT_SECRET);
+      return res.status(200).json({
+        token,
+        user,
+      });
+    }
 
-    const { username: possibleUsername } = await knex('users').where({ username }).select('username').first();
-    if (possibleUsername) return res.status(400).json({ error: `Já existe o username ${possibleUsername}.` });
+    const possibleUser = await knex('users').where({ username }).select('username').first();
+    if (possibleUser) return res.status(400).json({ error: `Já existe o username ${possibleUser.username}.` });
 
     try {
       [user] = await knex('users').insert({
         name, email, username, city, age,
       }, ['*']);
 
-      return res.status(201).json(user);
+      const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET);
+      return res.status(201).json({
+        token,
+        user,
+      });
     } catch (err) {
-      return res.status(500).json({ error: 'Não foi possível criar o usuário.' });
+      return res.status(500).json({ error: err.message });
     }
   }
 }
