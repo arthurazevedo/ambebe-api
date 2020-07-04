@@ -55,7 +55,7 @@ class UserController {
         user,
       });
     } catch (err) {
-      return res.status(500).json({ error: err.message });
+      return res.status(500).json({ error: 'Não foi possível criar o usuário.' });
     }
   }
 }
