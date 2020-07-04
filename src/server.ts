@@ -1,13 +1,13 @@
-import dotenv from 'dotenv';
-import express from 'express';
-import cors from 'cors';
-import routes from './routes';
+import socketIo from 'socket.io';
+import http from 'http';
+import app from './app';
 
-dotenv.config();
-const app = express();
+const server = http.createServer(app);
 
-app.use(express.json());
-app.use(cors());
-app.use(routes);
+const io = socketIo(server);
 
-app.listen(process.env.PORT || 3333);
+io.on('connection', (socket) => {
+  console.log('cliente conectado');
+});
+
+server.listen(process.env.PORT || 3333);
