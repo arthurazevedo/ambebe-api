@@ -35,5 +35,18 @@ class BarController {
       return res.status(500).json({ error: err.message });
     }
   }
+
+  static async remove(req: Request, res: Response) {
+    const id = req.body.userId;
+
+    if (!id) return res.status(400).json({ error: 'Informe ID do bar.' });
+
+    try {
+      await knex('bars').where({ id }).delete();
+      return res.status(200).json({ message: 'Bar deletado com sucesso.' });
+    } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
+  }
 }
 export default BarController;

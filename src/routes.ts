@@ -14,6 +14,7 @@ routes.post('/bar', BarController.create);
 
 routes.use(authMiddleware);
 
+routes.delete('/bar', BarController.remove);
 routes.post('/checkin', CheckinController.create);
 routes.get('/users', UserController.index);
 
