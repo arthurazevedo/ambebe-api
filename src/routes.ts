@@ -19,5 +19,6 @@ routes.delete('/bar', BarController.remove);
 routes.post('/checkin', CheckinController.create);
 routes.get('/users', UserController.index);
 routes.post('/orders', OrderController.create);
+routes.get('/orders/:id_checkin', OrderController.index);
 
 export default routes;
