@@ -10,8 +10,9 @@ io.on('connection', (socket) => {
   console.log(socket);
   socket.on('olamundo', (data) => {
     console.log(data);
-    io.emit('tudobom', 'fala davi');
   });
 });
 
 server.listen(process.env.PORT || 3333);
+
+export default io;
