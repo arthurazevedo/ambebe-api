@@ -10,4 +10,9 @@ io.on('connection', (socket) => {
   console.log('cliente conectado');
 });
 
+io.on('olamundo', (socket) => {
+  console.log(socket);
+  io.emit('tudobom', 'fala davi');
+});
+
 server.listen(process.env.PORT || 3333);
