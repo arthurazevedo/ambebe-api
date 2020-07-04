@@ -1,4 +1,4 @@
-import { Request, Response, ErrorRequestHandler } from 'express';
+import { Request, Response } from 'express';
 import knex from '../database';
 
 class OrderController {
