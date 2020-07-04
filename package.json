@@ -1,13 +1,12 @@
 {
   "name": "ambebe-api",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "./dist/src/index.js",
   "repository": "https://github.com/arthurazevedo/ambebe-api.git",
   "author": "arthurazevedo <arthur.stevam.costa@ccc.ufcg.edu.br>",
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpileOnly --ignore-watch node_modules --no-notify src/server.ts",
-    "build2": "yarn babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "build": "yarn tsc",
     "start": "node dist/src/server.js",
     "migrate": "knex migrate:latest",
@@ -30,13 +29,7 @@
     "tsc": "^1.20150623.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.10.4",
-    "@babel/core": "^7.10.4",
-    "@babel/node": "^7.10.4",
-    "@babel/preset-env": "^7.10.4",
-    "@babel/preset-typescript": "^7.10.4",
     "@types/jsonwebtoken": "^8.5.0",
-    "babel-plugin-module-resolver": "^4.0.0",
     "eslint": "^7.3.1",
     "ts-node-dev": "^1.0.0-pre.50",
     "typescript": "^3.9.6"
