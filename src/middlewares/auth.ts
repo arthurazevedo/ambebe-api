@@ -13,8 +13,8 @@ export default async (req: Request, res: Response, next: NextFunction) => {
 
       return next();
     } catch (error) {
-      return res.status(400).json({ error: 'Você não está autorizado!' });
+      return res.status(401).json({ error: 'Você não está autorizado!' });
     }
   }
-  return res.status(400).json({ error: 'Você não está autorizado!' });
+  return res.status(401).json({ error: 'Você não está autorizado!' });
 };
