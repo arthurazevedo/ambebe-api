@@ -4,8 +4,27 @@ import knex from '../database';
 
 class UserController {
   static async index(req: Request, res: Response) {
-    const users = await knex('users');
-    return res.json(users);
+    const { username } = req.body;
+
+    if (username) {
+      try {
+        const user = await knex('users').where('username', username).first();
+
+        if (user) {
+          return res.status(200).json(user);
+        }
+        return res.status(404).json({ error: `${username} não encontrado.` });
+      } catch (error) {
+        return res.status(500).json({ error: `Não foi possível procurar por ${username}.` });
+      }
+    }
+
+    try {
+      const users = await knex('users');
+      return res.status(200).json(users);
+    } catch (error) {
+      return res.status(500).json({ error: 'Ocorreu algum erro ao listar os usuários.' });
+    }
   }
 
   static async store(req: Request, res: Response) {
