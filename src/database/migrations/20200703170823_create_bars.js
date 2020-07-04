@@ -1,5 +1,6 @@
 exports.up = (knex) => knex.schema.createTable('bars', (table) => {
   table.increments('id');
+  table.string('email').unique();
   table.text('name');
   table.text('city');
   table.integer('checkins').defaultTo(0);
