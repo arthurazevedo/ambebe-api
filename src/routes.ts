@@ -8,7 +8,6 @@ import BarController from './controllers/BarController';
 
 const routes = express.Router();
 
-routes.get('/users', UserController.index);
 routes.post('/users', UserController.store);
 
 routes.post('/bar', BarController.create);
@@ -16,5 +15,6 @@ routes.post('/bar', BarController.create);
 routes.use(authMiddleware);
 
 routes.post('/checkin', CheckinController.create);
+routes.get('/users', UserController.index);
 
 export default routes;
