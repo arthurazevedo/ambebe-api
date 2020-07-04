@@ -9,7 +9,7 @@
     "dev": "ts-node-dev --respawn --transpileOnly --ignore-watch node_modules --no-notify src/server.ts",
     "build2": "yarn babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "build": "yarn tsc",
-    "start": "yarn build && node dist/src/server.js",
+    "start": "node dist/src/server.js",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
     "seed": "knex seed:run"
