@@ -27,7 +27,7 @@ class UserController {
     }
   }
 
-  static async store(req: Request, res: Response) {
+  static async create(req: Request, res: Response) {
     const {
       name, email, username, city, age,
     } = req.body;

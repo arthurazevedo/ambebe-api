@@ -9,7 +9,7 @@ import OrderController from './controllers/OrderController';
 
 const routes = express.Router();
 
-routes.post('/users', UserController.store);
+routes.post('/users', UserController.create);
 
 routes.post('/bar', BarController.create);
 
