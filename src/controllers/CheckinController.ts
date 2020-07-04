@@ -8,12 +8,15 @@ class CheckinController {
     if (user_id === undefined || bar_id === undefined) return res.status(400).json({ error: 'Requisição não está completa, por favor informe o user_id e bar_id' });
 
     try {
-      await knex('checkins').insert({
+      const [id_checkin] = await knex('checkins').insert({
         user_id,
         bar_id,
-      });
+      }, ['id']);
 
-      return res.status(201).json({ message: 'Checkin realizado com sucesso!' });
+      return res.status(201).json({
+        message: 'Checkin realizado com sucesso!',
+        id_checkin,
+      });
     } catch (err) {
       return res.status(500).json({ error: 'Erro no servidor, tente novamente mais tarde.' });
     }
