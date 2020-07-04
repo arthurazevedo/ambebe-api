@@ -9,7 +9,7 @@ export default async (req: Request, res: Response, next: NextFunction) => {
     try {
       const payload = jwt.verify(token, process.env.JWT_SECRET);
 
-      req.body.userId = payload;
+      req.body.userId = payload as Number;
 
       return next();
     } catch (error) {
