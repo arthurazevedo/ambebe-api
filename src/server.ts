@@ -8,9 +8,9 @@ const io = socketIo(server);
 
 io.on('connection', (socket) => {
   console.log(socket);
-  io.emit('tudobom', 'fala davi');
-  io.on('olamundo', (data) => {
+  socket.on('olamundo', (data) => {
     console.log(data);
+    io.emit('tudobom', 'fala davi');
   });
 });
 
