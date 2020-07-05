@@ -12,9 +12,9 @@ io.on('connection', (socket) => {
     const { user_id } = data.checkin;
     const { orders } = data;
 
-    const user = await knex('users').where({ id: user_id }).first();
+    // const user = await knex('users').where({ id: user_id }).first();
 
-    console.log(user);
+    console.log(data);
 
     const points = 0;
 
