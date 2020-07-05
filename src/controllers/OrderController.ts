@@ -15,16 +15,16 @@ class OrderController {
 
       const username = await knex('users').select('username').where('id', checkin.user_id).first();
 
-      const bar_name = await knex('bars').select('name').where('id', checkin.bar_id);
+      const bar_name = await knex('bars').select('name').where('id', checkin.bar_id).first();
 
       const products = await knex('products')
         .join('orders', 'products.id', '=', 'orders.id_product')
-        .where('orders.id_checkin', checkin.id);
+        .where('orders.id_checkin', checkin.id)
+        .distinct();
 
       io.emit('notification', {
         bar_name,
         username,
-        orders,
         products,
       });
 
