@@ -11,11 +11,21 @@ class OrderController {
     try {
       await knex('orders').insert(orders);
 
-      const checkin = await knex('checkins').select('user_id', 'bar_id').where({ id: orders[0].id_checkin }).first();
+      const checkin = await knex('checkins').select('id', 'user_id', 'bar_id').where({ id: orders[0].id_checkin }).first();
+
+      const username = await knex('users').select('username').where('id', checkin.user_id).first();
+
+      const bar_name = await knex('bars').select('name').where('id', checkin.bar_id);
+
+      const products = await knex('products')
+        .join('orders', 'products.id', '=', 'orders.id_product')
+        .where('orders.id_checkin', checkin.id);
 
       io.emit('notification', {
-        checkin,
+        bar_name,
+        username,
         orders,
+        products,
       });
 
       return res.status(200).json({ message: 'Item cadastrado com sucesso.' });

@@ -9,10 +9,9 @@ const io = socketIo(server);
 
 io.on('connection', (socket) => {
   socket.on('confirmation', async (data) => {
-    const { user_id } = data.checkin;
-    const { orders } = data;
+    const { username, bar_name, orders } = data;
 
-    const user = await knex('users').where('id', user_id).first();
+    const user = await knex('users').where('username', username).first();
 
     console.log(data);
 
