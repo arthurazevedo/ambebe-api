@@ -23,8 +23,8 @@ class OrderController {
         .distinct();
 
       io.emit('notification', {
-        bar_name,
-        username,
+        bar: bar_name.name,
+        user: username.username,
         products,
       });
 
