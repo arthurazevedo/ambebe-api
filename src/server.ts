@@ -22,6 +22,10 @@ io.on('connection', (socket) => {
       console.log(order.quantity);
     });
   });
+
+  socket.on('disconnect', () => {
+    console.log('Disconected');
+  });
 });
 
 server.listen(process.env.PORT || 3333);
