@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import knex from '../database';
 import io from '../server';
-import {Order} from '../types/Order';
+import { Order } from '../types/Order';
 import { Bar } from '../types/Bar';
 
 class OrderController {
@@ -14,8 +14,6 @@ class OrderController {
       await knex('orders').insert(orders);
 
       const checkin = await knex('checkins').select('id', 'user_id', 'bar_id').where({ id: orders[0].id_checkin }).first();
-
-      //      if (!(checkin.user_id == req.body.userId)) return res.status(401).json({ error: 'O token não corresponde ao id de usuario informado.' });
 
       const username: {username: String} = await knex('users').select('username').where('id', checkin.user_id).first();
 

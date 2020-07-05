@@ -20,7 +20,7 @@ class BarController {
     if (email === undefined || name === undefined || city === undefined) return res.status(400).json({ error: 'Requisição não está completa, por favor informe o nome e cidade do bar.' });
 
     try {
-      const [bar]:[Bar] = await knex('bars').insert({
+      const [bar] = await knex('bars').insert({
         email,
         name,
         city,
