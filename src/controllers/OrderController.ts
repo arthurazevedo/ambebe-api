@@ -13,7 +13,7 @@ class OrderController {
 
       const checkin = await knex('checkins').select('id', 'user_id', 'bar_id').where({ id: orders[0].id_checkin }).first();
 
-      // if (!(checkin.user_id === req.body.userId)) return res.status(401).json({ error: 'O token não corresponde ao id de usuario informado.' });
+      if (!(checkin.user_id == req.body.userId)) return res.status(401).json({ error: 'O token não corresponde ao id de usuario informado.' });
 
       const username = await knex('users').select('username').where('id', checkin.user_id).first();
 
