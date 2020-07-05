@@ -1,12 +1,13 @@
 import { Request, Response } from 'express';
 import knex from '../database';
+import { User } from '../types/User';
 
 class RankController {
   static async index(req: Request, res: Response) {
-    const { city } = req.body;
+    const { city } = req.query;
 
     try {
-      const rank = await knex('users').where('city', city).orderBy('points', 'desc').limit(5);
+      const rank: User[] = await knex('users').where('city', city).orderBy('points', 'desc').limit(5);
 
       return res.status(200).json(rank);
     } catch (err) {
