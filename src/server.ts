@@ -26,9 +26,9 @@ io.on('connection', (socket) => {
   });
 
   socket.on('dismiss', async (data) => {
-    const {id_checkin} = data.products[0];
-    await knex("Orders").where("id_checkin", id_checkin).delete();
-  })
+    const { id_checkin } = data.products[0];
+    await knex('orders').where('id_checkin', id_checkin).delete();
+  });
 
   socket.on('disconnect', () => {
     console.log('Disconected');
