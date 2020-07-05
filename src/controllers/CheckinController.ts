@@ -5,7 +5,9 @@ class CheckinController {
   static async create(req: Request, res: Response) {
     const { user_id, bar_id } = req.body;
 
-    if (user_id === undefined || bar_id === undefined) return res.status(400).json({ error: 'Requisição não está completa, por favor informe o user_id e bar_id' });
+    if (!user_id || !bar_id) return res.status(400).json({ error: 'Requisição não está completa, por favor informe o user_id e bar_id' });
+
+    if (!(user_id === req.body.userId)) return res.status(401).json({ error: 'User id não corresponde ao token.' });
 
     try {
       const [id_checkin] = await knex('checkins').insert({
