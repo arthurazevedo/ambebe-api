@@ -15,7 +15,7 @@ class CheckinController {
 
       return res.status(201).json({
         message: 'Checkin realizado com sucesso!',
-        id_checkin,
+        id_checkin: id_checkin.id,
       });
     } catch (err) {
       return res.status(500).json({ error: 'Erro no servidor, tente novamente mais tarde.' });

@@ -6,12 +6,16 @@ import UserController from './controllers/UserController';
 import CheckinController from './controllers/CheckinController';
 import BarController from './controllers/BarController';
 import OrderController from './controllers/OrderController';
+import ProductController from './controllers/ProductController';
+import RankController from './controllers/RankController';
 
 const routes = express.Router();
 
 routes.post('/users', UserController.create);
 
 routes.post('/bar', BarController.create);
+routes.get('/products', ProductController.index);
+routes.get('/rank', RankController.index);
 
 routes.use(authMiddleware);
 

@@ -8,4 +8,7 @@ exports.seed = (knex) => knex('products').del().then(() => knex('products').inse
   {
     id: 3, name: 'Skol Latinha', points: 1, url_image: 'https://static.carrefour.com.br/medias/sys_master/images/images/h4c/ha1/h00/h00/14684792487966.jpg',
   },
+  {
+    id: 4, name: 'Brahma Duplo Malte', points: 2, url_image: 'https://static.carrefour.com.br/medias/sys_master/images/images/h4c/ha1/h00/h00/14684792487966.jpg',
+  },
 ]));
