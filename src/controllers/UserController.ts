@@ -43,7 +43,7 @@ class UserController {
       });
     }
 
-    const possibleUser = await knex('users').where({ username }).select('username').first();
+    const possibleUser: User = await knex('users').where({ username }).select('username').first();
     if (possibleUser) return res.status(400).json({ error: `Já existe o username ${possibleUser.username}.` });
 
     try {
