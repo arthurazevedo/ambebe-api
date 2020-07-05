@@ -2,13 +2,15 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import knex from '../database';
 
+import { User } from '../types/User';
+
 class UserController {
   static async index(req: Request, res: Response) {
     const { username } = req.body;
 
     if (username) {
       try {
-        const user = await knex('users').where('username', username).first();
+        const user: User = await knex('users').where('username', username).first();
 
         if (user) {
           return res.status(200).json(user);
@@ -20,7 +22,7 @@ class UserController {
     }
 
     try {
-      const users = await knex('users');
+      const users: User[] = await knex('users');
       return res.status(200).json(users);
     } catch (error) {
       return res.status(500).json({ error: 'Ocorreu algum erro ao listar os usuários.' });
@@ -32,7 +34,7 @@ class UserController {
       name, email, username, city, age,
     } = req.body;
 
-    let user = await knex('users').where('email', email).first();
+    let user: User = await knex('users').where('email', email).first();
     if (user) {
       const token = jwt.sign(user.id, process.env.JWT_SECRET);
       return res.status(200).json({
