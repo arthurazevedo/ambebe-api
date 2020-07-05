@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import knex from '../database';
+import io from '../server';
 
 class OrderController {
   static async create(req: Request, res: Response) {
@@ -9,6 +10,13 @@ class OrderController {
 
     try {
       await knex('orders').insert(orders);
+
+      const checkin = await knex('checkins').select('user_id', 'bar_id').where({ id: orders[0].id_checkin });
+
+      io.emit('notification', {
+        checkin,
+        orders,
+      });
 
       return res.status(200).json({ message: 'Item cadastrado com sucesso.' });
     } catch (err) {

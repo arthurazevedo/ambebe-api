@@ -7,17 +7,11 @@ import CheckinController from './controllers/CheckinController';
 import BarController from './controllers/BarController';
 import OrderController from './controllers/OrderController';
 
-import io from './server';
-
 const routes = express.Router();
 
 routes.post('/users', UserController.create);
 
 routes.post('/bar', BarController.create);
-
-routes.get('/', (req, res) => {
-  io.emit('tudobom', 'fala davi');
-});
 
 routes.use(authMiddleware);
 
