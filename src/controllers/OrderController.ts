@@ -11,7 +11,7 @@ class OrderController {
     try {
       await knex('orders').insert(orders);
 
-      const checkin = await knex('chckins').select('user_id', 'bar_id').where({ id: orders[0].id_checkin }).first();
+      const checkin = await knex('checkins').select('user_id', 'bar_id').where({ id: orders[0].id_checkin }).first();
 
       io.emit('notification', {
         checkin,
