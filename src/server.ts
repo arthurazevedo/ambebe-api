@@ -9,21 +9,20 @@ const io = socketIo(server);
 
 io.on('connection', (socket) => {
   socket.on('confirmation', async (data) => {
-    const { username, bar_name, products } = data;
-
-    const user = await knex('users').where('username', username).first();
+    const { user, products } = data;
 
     console.log(data);
+    const userExist = await knex('users').where('username', user).first();
 
     products.forEach((product) => {
       const { points, quantity } = product;
 
-      user.points += (points * quantity);
+      userExist.points += (points * quantity);
     });
 
     await knex('users')
-      .where('id', user.id)
-      .update('points', user.points);
+      .where('id', userExist.id)
+      .update('points', userExist.points);
   });
 
   socket.on('disconnect', () => {
