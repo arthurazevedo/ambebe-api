@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import knex from '../database';
+import { Bar } from '../types/Bar';
 
 class BarController {
   static async create(req: Request, res: Response) {
@@ -19,7 +20,7 @@ class BarController {
     if (email === undefined || name === undefined || city === undefined) return res.status(400).json({ error: 'Requisição não está completa, por favor informe o nome e cidade do bar.' });
 
     try {
-      const [bar] = await knex('bars').insert({
+      const [bar]:[Bar] = await knex('bars').insert({
         email,
         name,
         city,

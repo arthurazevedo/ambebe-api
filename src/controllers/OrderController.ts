@@ -1,10 +1,12 @@
 import { Request, Response } from 'express';
 import knex from '../database';
 import io from '../server';
+import {Order} from '../types/Order';
+import { Bar } from '../types/Bar';
 
 class OrderController {
   static async create(req: Request, res: Response) {
-    const { orders } = req.body;
+    const { orders }:{ orders: Order[]} = req.body;
 
     if (!orders) return res.status(400).json({ error: 'A requisição deve conter um array de pedidos.' });
 
@@ -15,9 +17,9 @@ class OrderController {
 
       if (!(checkin.user_id == req.body.userId)) return res.status(401).json({ error: 'O token não corresponde ao id de usuario informado.' });
 
-      const username = await knex('users').select('username').where('id', checkin.user_id).first();
+      const username: {username: String} = await knex('users').select('username').where('id', checkin.user_id).first();
 
-      const bar = await knex('bars').select('name', 'id').where('id', checkin.bar_id).first();
+      const bar: Bar = await knex('bars').select('name', 'id').where('id', checkin.bar_id).first();
 
       const products = await knex('products')
         .join('orders', 'products.id', '=', 'orders.id_product')
@@ -50,7 +52,7 @@ class OrderController {
 
       if (!checkin) return res.status(401).json({ message: 'Não existe o checkin informado.' });
 
-      const orders = await knex('orders').where({ id_checkin });
+      const orders: Order[] = await knex('orders').where({ id_checkin });
 
       if (orders.length <= 0) return res.status(401).json({ message: 'Não existe orders para este checkin.' });
 
