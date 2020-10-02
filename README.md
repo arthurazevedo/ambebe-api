@@ -64,7 +64,6 @@ Com o aplicativo <b>Ambebe</b>, buscamos tornar a experiência de frequentar bar
 
 ## ✍️ Desenvolvedores <a name = "authors"></a>
 <div>
-<img src="https://avatars3.githubusercontent.com/u/34775606?s=600&v=10" width="100">
 <br>
 <b>Arthur Stevam</b>
 <br>
@@ -73,7 +72,6 @@ Com o aplicativo <b>Ambebe</b>, buscamos tornar a experiência de frequentar bar
 </div>
 
 <div>
-<img src="https://avatars0.githubusercontent.com/u/40612788?s=460&u=abb3a9982b62292b78f741ce47e8eb3a8803bd84&v=4" width="100">
 <br>
 <b>Davi Gomes</b>
 <br>
@@ -82,7 +80,6 @@ Com o aplicativo <b>Ambebe</b>, buscamos tornar a experiência de frequentar bar
 </div>
 
 <div>
-<img src="https://avatars0.githubusercontent.com/u/23422560?s=460&u=689377ee372f8766e93898f4abfd0bea9bb0c386&v=4" width="100">
 <br>
 <b>Fabio Júnior</b>
 <br>
@@ -91,7 +88,6 @@ Com o aplicativo <b>Ambebe</b>, buscamos tornar a experiência de frequentar bar
 </div>
 
 <div>
-<img src="https://avatars2.githubusercontent.com/u/37816711?s=400&u=8a3bfb7b993b384f7a4eaed3df17b852bc2273ae&v=4" width="100">
 <br>
 <b>Gleisson Michael</b>
 <br>
@@ -101,9 +97,8 @@ Com o aplicativo <b>Ambebe</b>, buscamos tornar a experiência de frequentar bar
 
 
 <div>
-<img src="https://media-exp1.licdn.com/dms/image/C4E03AQFxFlxIba_Fcg/profile-displayphoto-shrink_200_200/0?e=1599696000&v=beta&t=DAGYmDMqen_ME9SJA5ZkrrfbN7JjVuCPlhCmYRqjbGI" width="100">
 <br>
-<b>Matheus Gonaga</b>
+<b>Matheus Gonsaga</b>
 <br>
 <a href="https://www.linkedin.com/in/matheus-g-83176393/"><img src="./public/assets/linkedin.png" width="25"/></a>
 </div>
