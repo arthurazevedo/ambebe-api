@@ -98,7 +98,7 @@ Com o aplicativo <b>Ambebe</b>, buscamos tornar a experiência de frequentar bar
 
 <div>
 <br>
-<b>Matheus Gonaga</b>
+<b>Matheus Gonsaga</b>
 <br>
 <a href="https://www.linkedin.com/in/matheus-g-83176393/"><img src="./public/assets/linkedin.png" width="25"/></a>
 </div>
